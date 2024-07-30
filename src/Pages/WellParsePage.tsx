@@ -75,7 +75,7 @@ const WellParsePage: React.FC = () => {
             <Box sx={{ p: 2 }}>
 
                 <Typography variant="h5" sx={{ mb: 2 }}>{selectedProjectName}</Typography>
-                
+
                 {error && <Typography color="error">{error}</Typography>}
                 {isLoading ? (
                     <Typography>Загрузка...</Typography>
@@ -89,21 +89,6 @@ const WellParsePage: React.FC = () => {
                         </LocalizationProvider>
                     </Box>
                 )}
-
-                <Box sx={{ mt: 2 }}>
-                    {wellArray.map((well) => (
-                        <WellCard
-                            key={well.wellId}
-                            siteName={siteArray.find(site => site.siteId === well.siteId)?.siteName || ''}
-                            wellCommonName={well.wellCommonName}
-                            reason={well.reason}
-                            spudDate={well.spudDate}
-                            wellId={well.wellId}
-                            onSelect={WellSelect}
-                            isSelected={selectedWellId === well.wellId}
-                        />
-                    ))}
-                </Box>
 
                 <ReportTable selectedWellId={selectedWellId} />
             </Box>
