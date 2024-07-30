@@ -14,6 +14,7 @@ const WellCard: React.FC<WellCardProps> = ({ siteName, wellCommonName, reason, s
                 setIsLoading(true);
                 const events = await fetchEvents(wellId);
                 setEvents(events);
+                console.log("Events for wellId:", wellId, events);
             } catch (error) {
                 setError((error as Error).message);
                 console.error('Ошибка при получении мероприятий:', error);

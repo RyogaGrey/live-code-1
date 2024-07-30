@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { CarouselProps } from '../Data/types';
 import WellCard from './WellCard';
 
@@ -13,18 +13,22 @@ const Carousel: React.FC<CarouselProps> = ({ wellArray }) => {
 
     return (
         <Box sx={{ display: 'flex', overflowX: 'auto', gap: 2, p: 2 }}>
-            {wellArray.map((well) => (
-                <WellCard
-                    key={well.wellId}
-                    siteName={well.siteId}
-                    wellCommonName={well.wellCommonName}
-                    reason={well.reason}
-                    spudDate={well.spudDate}
-                    wellId={well.wellId}
-                    onSelect={Select}
-                    isSelected={well.wellId === selectedWellId}
-                />
-            ))}
+            {wellArray.length > 0 ? (
+                wellArray.map((well) => (
+                    <WellCard
+                        key={well.wellId}
+                        siteName={well.siteId}
+                        wellCommonName={well.wellCommonName}
+                        reason={well.reason}
+                        spudDate={well.spudDate}
+                        wellId={well.wellId}
+                        onSelect={Select}
+                        isSelected={well.wellId === selectedWellId}
+                    />
+                ))
+            ) : (
+                <Typography>Нет доступных скважин</Typography>
+            )}
         </Box>
     );
 };

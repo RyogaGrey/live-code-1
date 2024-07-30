@@ -26,6 +26,7 @@ const WellParsePage: React.FC = () => {
     const fetchProjectArray = async () => {
         try {
             const projects = await fetchProjects();
+            console.log("Projects:", projects); // Debugging line
             setProjectArray(projects);
         } catch (error) {
             setError((error as Error).message);
@@ -41,23 +42,22 @@ const WellParsePage: React.FC = () => {
         try {
             setIsLoading(true);
             const sites = await fetchSites(projectId);
+            console.log("Sites:", sites); // Debugging line
             setSiteArray(sites);
-        } catch (error) {
-            setError((error as Error).message);
-            console.error('Ошибка при получении кустов:', error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
 
-    const SiteSelect = async (siteIds: string) => {
-        try {
-            setIsLoading(true);
-            const wells = await fetchWells(siteIds);
-            setWellArray(wells);
+            // Fetch wells for the first site as an example
+            if (sites.length > 0) {
+                const siteIds = sites.map((site: Site) => site.siteId).join(',');
+                console.log("siteIds:", siteIds); // Debugging line
+                const wells = await fetchWells(siteIds);
+                console.log("Wells:", wells); // Debugging line
+                setWellArray(wells);
+            } else {
+                setWellArray([]);
+            }
         } catch (error) {
             setError((error as Error).message);
-            console.error('Ошибка при получении скважин:', error);
+            console.error('Ошибка при получении кустов или скважин:', error);
         } finally {
             setIsLoading(false);
         }
