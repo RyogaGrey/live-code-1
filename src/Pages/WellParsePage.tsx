@@ -26,7 +26,7 @@ const WellParsePage: React.FC = () => {
     const fetchProjectArray = async () => {
         try {
             const projects = await fetchProjects();
-            console.log("Projects:", projects); // Debugging line
+            console.log("Projects:", projects); // Debug
             setProjectArray(projects);
         } catch (error) {
             setError((error as Error).message);
@@ -42,15 +42,14 @@ const WellParsePage: React.FC = () => {
         try {
             setIsLoading(true);
             const sites = await fetchSites(projectId);
-            console.log("Sites:", sites); // Debugging line
+            console.log("Sites:", sites); // Debug
             setSiteArray(sites);
 
-            // Fetch wells for the first site as an example
             if (sites.length > 0) {
                 const siteIds = sites.map((site: Site) => site.siteId).join(',');
-                console.log("siteIds:", siteIds); // Debugging line
+                console.log("siteIds:", siteIds); // Debug
                 const wells = await fetchWells(siteIds);
-                console.log("Wells:", wells); // Debugging line
+                console.log("Wells:", wells); // Debug
                 setWellArray(wells);
             } else {
                 setWellArray([]);
@@ -78,12 +77,15 @@ const WellParsePage: React.FC = () => {
                 {isLoading ? (
                     <Typography>Загрузка...</Typography>
                 ) : (
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <Carousel wellArray={wellArray} />
-
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DateCalendar />
-                        </LocalizationProvider>
+                    <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
+                        <Box sx={{ flexGrow: 1, overflowX: 'auto', mr: 2, minWidth: 0 }}>
+                            <Carousel wellArray={wellArray} />
+                        </Box>
+                        <Box sx={{ width: '300px' }}>
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DateCalendar />
+                            </LocalizationProvider>
+                        </Box>
                     </Box>
                 )}
 

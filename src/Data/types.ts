@@ -8,6 +8,11 @@ export interface Site {
     siteName: string;
 }
 
+export interface WellEventsProps {
+    wellId: string;
+    onEventsLoaded: (hasEvents: boolean) => void;
+}
+
 export interface Well {
     wellId: string;
     wellCommonName: string;

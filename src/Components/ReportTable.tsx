@@ -1,7 +1,7 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import { MaterialReactTable, MRT_ColumnDef } from 'material-react-table';
-import { fetchWells } from '../Funcs/apiService'; // Импорт функции для получения отчетов
+import { fetchReports } from '../Funcs/apiService';
 import { Report, ReportTableProps } from '../Data/types';
 
 const ReportTable: React.FC<ReportTableProps> = ({ selectedWellId }) => {
@@ -11,14 +11,14 @@ const ReportTable: React.FC<ReportTableProps> = ({ selectedWellId }) => {
 
     useEffect(() => {
         if (selectedWellId) {
-            fetchReportArray();
+            fetchReportArray(selectedWellId);
         }
     }, [selectedWellId]);
 
-    const fetchReportArray = async () => {
+    const fetchReportArray = async (wellId: string) => {
         setIsLoading(true);
         try {
-            const reports = await fetchWells(selectedWellId);
+            const reports = await fetchReports(wellId);
             setReportArray(reports);
         } catch (error) {
             setError((error as Error).message);
