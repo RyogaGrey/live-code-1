@@ -2,18 +2,7 @@ import React, { useMemo, useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import { MaterialReactTable, MRT_ColumnDef } from 'material-react-table';
 import { fetchWells } from '../Funcs/apiService'; // Импорт функции для получения отчетов
-
-interface Report {
-    type: string;
-    date: string;
-    number: number;
-    description: string;
-    event: string;
-}
-
-interface ReportTableProps {
-    selectedWellId: string;
-}
+import { Report, ReportTableProps } from '../Data/types';
 
 const ReportTable: React.FC<ReportTableProps> = ({ selectedWellId }) => {
     const [reportArray, setReportArray] = useState<Report[]>([]);
