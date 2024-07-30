@@ -47,3 +47,23 @@ export const fetchEvents = async (wellId: string) => {
         throw new Error(axiosError.response?.data?.message || 'Ошибка при получении мероприятий');
     }
 };
+
+export const fetchReports = async (wellId: string, eventIds: string[] = [], reportAlias: string = '') => {
+    try {
+        let url = `/Universal/DmReportJournal/wellId/${wellId}/`;
+        if (eventIds.length > 0) {
+            url += `eventId/${eventIds.join(',')}/`;
+        }
+        if (reportAlias) {
+            url += `reportAlias/${reportAlias}/`;
+        }
+
+        const response = await axiosInstance.get(url, {
+            params: { fields: 'eventCode,reportJournalId,wellId,wellboreId,dateReport,eventId,reportAlias,description,entityType,reportNo' }
+        });
+        return response.data;
+    } catch (error) {
+        const axiosError = error as AxiosErrorWithResponse;
+        throw new Error(axiosError.response?.data?.message || 'Ошибка при получении отчетов');
+    }
+};

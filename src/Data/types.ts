@@ -30,6 +30,12 @@ export interface Report {
     event: string;
 }
 
+export interface BarWithSearchProps {
+    projectArray: Project[];
+    ProjectSelect: (projectName: string, projectId: string) => void;
+}
+
+
 export interface ReportTableProps {
     selectedWellId: string;
 }
@@ -52,8 +58,4 @@ export interface WellCardProps {
 export interface ProjectListProps {
     projectArray: Project[];
     onProjectSelect: (projectName: string, projectId: string) => void;
-}
-
-export interface CarouselProps {
-    wellArray: Well[];
 }

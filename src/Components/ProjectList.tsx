@@ -1,19 +1,10 @@
 import React from 'react';
 import { Button, Box } from '@mui/material';
-
-interface Project {
-    projectId: string;
-    projectName: string;
-}
-
-interface ProjectListProps {
-    projectArray: Project[];
-    onProjectSelect: (projectName: string, projectId: string) => void;
-}
+import { ProjectListProps } from '../Data/types';
 
 const ProjectList: React.FC<ProjectListProps> = ({ projectArray, onProjectSelect }) => {
     return (
-        <Box>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
             {projectArray.map((project) => (
                 <Button key={project.projectId} color="inherit" onClick={() => onProjectSelect(project.projectName, project.projectId)}>
                     {project.projectName}

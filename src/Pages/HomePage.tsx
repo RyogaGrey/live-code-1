@@ -14,7 +14,7 @@ export default function HomePage() {
                     style={{ marginLeft: '5px', marginRight: '5px' }}
                 >
                     /wells
-                </Button>, чтобы работать.
+                </Button>, чтобы начать работать.
             </p>
         </>
     );

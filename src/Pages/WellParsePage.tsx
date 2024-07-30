@@ -7,7 +7,6 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { fetchProjects, fetchSites, fetchWells } from '../Funcs/apiService';
 import BarWithSearch from '../Components/BarWithSearch';
-import WellCard from '../Components/WellCard';
 import { Project, Site, Well } from '../Data/types';
 
 const WellParsePage: React.FC = () => {
@@ -73,7 +72,6 @@ const WellParsePage: React.FC = () => {
             <BarWithSearch projectArray={projectArray} ProjectSelect={ProjectSelect} />
 
             <Box sx={{ p: 2 }}>
-
                 <Typography variant="h5" sx={{ mb: 2 }}>{selectedProjectName}</Typography>
 
                 {error && <Typography color="error">{error}</Typography>}
@@ -81,7 +79,6 @@ const WellParsePage: React.FC = () => {
                     <Typography>Загрузка...</Typography>
                 ) : (
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-
                         <Carousel wellArray={wellArray} />
 
                         <LocalizationProvider dateAdapter={AdapterDayjs}>

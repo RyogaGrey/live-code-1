@@ -2,16 +2,7 @@ import React from 'react';
 import { AppBar, Toolbar, Button, Box, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ProjectList from './ProjectList';
-
-interface Project {
-    projectId: string;
-    projectName: string;
-}
-
-interface BarWithSearchProps {
-    projectArray: Project[];
-    ProjectSelect: (projectName: string, projectId: string) => void;
-}
+import { BarWithSearchProps } from '../Data/types';
 
 const BarWithSearch: React.FC<BarWithSearchProps> = ({ projectArray, ProjectSelect }) => {
     return (

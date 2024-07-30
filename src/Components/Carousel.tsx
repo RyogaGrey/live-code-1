@@ -1,11 +1,14 @@
-import React from 'react';
-import { Box, Card, CardContent, CardActions, Typography, Button } from '@mui/material';
+import React, { useState } from 'react';
+import { Box } from '@mui/material';
 import { CarouselProps } from '../Data/types';
 import WellCard from './WellCard';
 
 const Carousel: React.FC<CarouselProps> = ({ wellArray }) => {
-    const Select = (wellIDT: string) => {
-        console.log('$Выбран {wellID}')
+    const [selectedWellId, setSelectedWellId] = useState<string>('');
+
+    const Select = (wellId: string) => {
+        console.log(`Выбран ${wellId}`);
+        setSelectedWellId(wellId);
     };
 
     return (
@@ -19,7 +22,7 @@ const Carousel: React.FC<CarouselProps> = ({ wellArray }) => {
                     spudDate={well.spudDate}
                     wellId={well.wellId}
                     onSelect={Select}
-                    isSelected={false} // можно добавить логику для определения, является ли скважина выбранной
+                    isSelected={well.wellId === selectedWellId}
                 />
             ))}
         </Box>
