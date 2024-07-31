@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Card, CardContent, CardActions, Button } from '@mui/material';
-import { fetchEvents } from '../Funcs/apiService';
-import { WellCardProps, Event } from '../Data/types';
+import { fetchEvents } from '../../Funcs/apiService';
+import { IWellCardProps, IEvent } from '../../Data/types';
 
-const WellCard: React.FC<WellCardProps> = ({ siteName, wellCommonName, reason, spudDate, wellId, onSelect, isSelected }) => {
-    const [events, setEvents] = useState<Event[]>([]);
+const WellCard: React.FC<IWellCardProps> = ({ siteName, wellCommonName, reason, spudDate, wellId, onSelect, isSelected }) => {
+    const [events, setEvents] = useState<IEvent[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 

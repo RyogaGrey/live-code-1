@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Box, Typography } from '@mui/material';
-import { CarouselProps } from '../Data/types';
+import { ICarouselProps } from '../../Data/types';
 import WellCard from './WellCard';
 
-const Carousel: React.FC<CarouselProps> = ({ wellArray }) => {
+const Carousel: React.FC<ICarouselProps> = ({ wellArray }) => {
     const [selectedWellId, setSelectedWellId] = useState<string>('');
 
-    const Select = (wellId: string) => {
+    const Selected = (wellId: string) => {
         console.log(`Выбран ${wellId}`);
         setSelectedWellId(wellId);
     };
@@ -22,7 +22,7 @@ const Carousel: React.FC<CarouselProps> = ({ wellArray }) => {
                         reason={well.reason}
                         spudDate={well.spudDate}
                         wellId={well.wellId}
-                        onSelect={Select}
+                        onSelect={Selected}
                         isSelected={well.wellId === selectedWellId}
                     />
                 ))

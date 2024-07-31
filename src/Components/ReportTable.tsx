@@ -2,10 +2,10 @@ import React, { useMemo, useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import { MaterialReactTable, MRT_ColumnDef } from 'material-react-table';
 import { fetchReports } from '../Funcs/apiService';
-import { Report, ReportTableProps } from '../Data/types';
+import { IReport, IReportTableProps } from '../Data/types';
 
-const ReportTable: React.FC<ReportTableProps> = ({ selectedWellId }) => {
-    const [reportArray, setReportArray] = useState<Report[]>([]);
+const ReportTable: React.FC<IReportTableProps> = ({ selectedWellId }) => {
+    const [reportArray, setReportArray] = useState<IReport[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -28,7 +28,7 @@ const ReportTable: React.FC<ReportTableProps> = ({ selectedWellId }) => {
         }
     };
 
-    const placeholders: Report[] = [
+    const placeholders: IReport[] = [
         { type: 'Суточный', date: '----', number: 0, description: 'Описание', event: 'Мероприятие' },
         { type: 'Суточный', date: '----', number: 1, description: 'Описание', event: 'Мероприятие' },
         { type: 'Суточный', date: '----', number: 2, description: 'Описание', event: 'Мероприятие' },
@@ -36,7 +36,7 @@ const ReportTable: React.FC<ReportTableProps> = ({ selectedWellId }) => {
 
     const dataToDisplay = useMemo(() => (reportArray.length > 0 ? reportArray : placeholders), [reportArray]);
 
-    const columns = useMemo<MRT_ColumnDef<Report>[]>(() => [
+    const columns = useMemo<MRT_ColumnDef<IReport>[]>(() => [
         {
             accessorKey: 'type',
             header: 'Тип',

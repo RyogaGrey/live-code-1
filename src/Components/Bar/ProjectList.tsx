@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Box } from '@mui/material';
-import { ProjectListProps } from '../Data/types';
+import { IProjectListProps } from '../../Data/types';
 
-const ProjectList: React.FC<ProjectListProps> = ({ projectArray, onProjectSelect }) => {
+const ProjectList: React.FC<IProjectListProps> = ({ projectArray, onProjectSelect }) => {
     return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
             {projectArray.map((project) => (

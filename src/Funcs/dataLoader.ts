@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { fetchProjects, fetchSites, fetchWells, fetchEvents, fetchReports } from '../Funcs/apiService';
-import { Project, Site, Well, Event, Report } from '../Data/types';
+import { IProject, ISite, IWell, IEvent, IReport } from '../Data/types';
 
 const useDataLoader = () => {
-    const [projects, setProjects] = useState<Project[]>([]);
-    const [sites, setSites] = useState<Site[]>([]);
-    const [wells, setWells] = useState<Well[]>([]);
-    const [events, setEvents] = useState<Event[]>([]);
-    const [reports, setReports] = useState<Report[]>([]);
+    const [projects, setProjects] = useState<IProject[]>([]);
+    const [sites, setSites] = useState<ISite[]>([]);
+    const [wells, setWells] = useState<IWell[]>([]);
+    const [events, setEvents] = useState<IEvent[]>([]);
+    const [reports, setReports] = useState<IReport[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 

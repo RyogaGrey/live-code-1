@@ -1,19 +1,19 @@
-export interface Project {
+export interface IProject {
     projectId: string;
     projectName: string;
 }
 
-export interface Site {
+export interface ISite {
     siteId: string;
     siteName: string;
 }
 
-export interface WellEventsProps {
+export interface IWellEventsProps {
     wellId: string;
     onEventsLoaded: (hasEvents: boolean) => void;
 }
 
-export interface Well {
+export interface IWell {
     wellId: string;
     wellCommonName: string;
     reason: string;
@@ -21,13 +21,13 @@ export interface Well {
     siteId: string;
 }
 
-export interface Event {
+export interface IEvent {
     wellId: string;
     eventId: string;
     eventCode: string;
 }
 
-export interface Report {
+export interface IReport {
     type: string;
     date: string;
     number: number;
@@ -35,22 +35,24 @@ export interface Report {
     event: string;
 }
 
-export interface BarWithSearchProps {
-    projectArray: Project[];
+export interface IBarWithSearchProps {
+    projectArray: IProject[];
     ProjectSelect: (projectName: string, projectId: string) => void;
 }
 
 
-export interface ReportTableProps {
+export interface IReportTableProps {
     selectedWellId: string;
 }
 
-
-export interface CarouselProps {
-    wellArray: Well[];
+export interface ICarouselProps {
+    wellArray: IWell[];
+    selectedWellId: string;
+    onWellSelect: (wellId: string) => void;
 }
 
-export interface WellCardProps {
+
+export interface IWellCardProps {
     siteName: string;
     wellCommonName: string;
     reason: string;
@@ -60,7 +62,20 @@ export interface WellCardProps {
     isSelected: boolean;
 }
 
-export interface ProjectListProps {
-    projectArray: Project[];
+export interface IProjectListProps {
+    projectArray: IProject[];
     onProjectSelect: (projectName: string, projectId: string) => void;
+}
+
+export interface IWellParsePageProps {
+    projectArray: IProject[];
+    selectedProjectName: string;
+    selectedProjectId: string;
+    siteArray: ISite[];
+    wellArray: IWell[];
+    selectedWellId: string;
+    isLoading: boolean;
+    error: string | null;
+    onProjectSelect: (projectName: string, projectId: string) => void;
+    onWellSelect: (wellId: string) => void;
 }

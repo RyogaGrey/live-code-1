@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
-import { fetchEvents } from '../Funcs/apiService';
-import { Event, WellEventsProps } from '../Data/types';
+import { fetchEvents } from '../../Funcs/apiService';
+import { IEvent, IWellEventsProps } from '../../Data/types';
 
-const WellEvents: React.FC<WellEventsProps> = ({ wellId }) => {
-    const [events, setEvents] = useState<Event[]>([]);
+const WellEvents: React.FC<IWellEventsProps> = ({ wellId }) => {
+    const [events, setEvents] = useState<IEvent[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
