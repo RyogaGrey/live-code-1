@@ -43,14 +43,14 @@ const UserTable: React.FC<IUserTableProps> = ({ data, onRowSelect }) => {
     }
   };
 
-  return (
-    <MaterialReactTable
-      columns={columns}
-      data={data}
-      state={{ rowSelection }}
-      onRowSelectionChange={handleRowSelectionChange}
-      enableRowSelection 
-    />
+  return ({}
+    // <MaterialReactTable
+    //   columns={columns}
+    //   data={data}
+    //   state={{ rowSelection }}
+    //   onRowSelectionChange={handleRowSelectionChange}
+    //   enableRowSelection 
+    // />
   );
 };
 
