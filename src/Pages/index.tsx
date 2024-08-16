@@ -5,6 +5,12 @@ import WellParse from './WellParsePage';
 import Useres from './Users';
 import Form from './Form';
 
+import RegistrationForm from '../Components/Forms/RegistrationForm';
+import LoginForm from '../Components/Forms/LoginForm';
+import WelcomePage from './WelcomePage';
+import SurveyForm from '../Components/Forms/SurveyForm';
+import RecoveryForm from '../Components/Forms/RecoveryForm';
+
 interface RouteType {
     path: string;
     element: React.ReactElement;
@@ -12,17 +18,21 @@ interface RouteType {
 
 const RoutesContext = React.createContext<RouteType[]>([]);
 
-const homeRoute: RouteType = { path: "home", element: <Home/>}
-const wellParse: RouteType = { path: "wells", element: <WellParse/>}
-const useresRoute: RouteType = { path: "u", element: <Useres/>}
-const formRoute: RouteType = { path: 'form', element: <Form/> };
-const errRoute: RouteType = {path: "*", element: homeRoute.element}
-
-const routes: RouteType[] = [homeRoute, wellParse, errRoute, useresRoute, formRoute];
+const appRoutes: RouteType[] = [
+  { path: 'home', element: <Home /> },
+  { path: "wells", element: <WellParse/>},
+  { path: "u", element: <Useres/>},
+  { path: 'form', element: <Form/> },
+  { path: 'registration', element: <RegistrationForm /> },
+  { path: 'login', element: <LoginForm /> },
+  { path: 'welcome', element: <WelcomePage /> },
+  { path: 'survey', element: <SurveyForm /> },
+  { path: 'recovery', element: <RecoveryForm /> },
+];
 
 const AppR: React.FC = () => {
     return (
-      <RoutesContext.Provider value={routes}>
+      <RoutesContext.Provider value={appRoutes}>
         <BrowserRouter>
           <RoutesComponent />
         </BrowserRouter>

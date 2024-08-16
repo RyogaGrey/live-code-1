@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import MaterialReactTable, { MRT_ColumnDef, MRT_RowSelectionState } from 'material-react-table';
+import { MaterialReactTable, MRT_ColumnDef, MRT_RowSelectionState } from 'material-react-table';
 
-// TODO: Интерфейс для пользователя переместить к остальным
+// Интерфейс для пользователя
 interface IUser {
   id: number;
   name: string;
@@ -43,14 +43,14 @@ const UserTable: React.FC<IUserTableProps> = ({ data, onRowSelect }) => {
     }
   };
 
-  return ({}
-    // <MaterialReactTable
-    //   columns={columns}
-    //   data={data}
-    //   state={{ rowSelection }}
-    //   onRowSelectionChange={handleRowSelectionChange}
-    //   enableRowSelection 
-    // />
+  return (
+    <MaterialReactTable
+      columns={columns}
+      data={data}
+      state={{ rowSelection }}
+      // onRowSelectionChange={handleRowSelectionChange}
+      enableRowSelection 
+    />
   );
 };
 
