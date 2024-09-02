@@ -11,8 +11,8 @@ const RegistrationForm: React.FC = () => {
 
     const handleRegistration = () => {
         const userData = { fullName, phoneNumber, gender, comment };
-        setUser(userData); // Сохраняем данные пользователя в контексте и localStorage
-        handleSubmit(); // Можно добавить логику, если нужно
+        setUser(userData);
+        handleSubmit();
     };
 
     return (
